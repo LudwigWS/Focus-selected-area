@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Focus selected area
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  try to take over the world!
 // @author       LudwigWS
 // @include http://*
@@ -23,6 +23,12 @@
     function focusSelectedArea (eleToKeep) {
         while (eleToKeep !== document.body) {
             deleteSiblings(eleToKeep);
+            if ($(eleToKeep).css("display") !== undefined) {
+                $(eleToKeep).css({
+                    "align-items": "center",
+                    "justify-content": "center"
+                })
+            }
             eleToKeep = eleToKeep.parentNode;
         }
     }
